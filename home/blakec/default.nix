@@ -17,8 +17,8 @@
         ../../modules/home/extras.nix
     ];
 
-    home.username = "<username>";
-    home.homeDirectory = "/home/<username>";
+    home.username = "blakec";
+    home.homeDirectory = "/home/blakec";
 
     programs.home-manager.enable = true;
 

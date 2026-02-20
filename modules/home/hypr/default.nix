@@ -7,6 +7,13 @@
     ];
 
     wayland.windowManager.hyprland = {
+        enable = true;
+        # Use packages from the NixOS module to avoid version mismatches
+        package = null;
+        portalPackage = null;
+
+        # Critical: lets systemd services (hypridle, etc.) see $PATH
+        systemd.variables = [ "--all" ];
         settings = {
             monitor = [
                 "desc:BOE NE160WUM-NX2, 1920x1200@165, 0x0, 1"
