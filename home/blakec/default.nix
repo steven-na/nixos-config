@@ -1,20 +1,22 @@
 { inputs, pkgs, ... }:
 {
     imports = [
-        ../../modules/home/hyprland.nix
-        ../../modules/home/hyprpaper.nix
-        ../../modules/home/hyprlock.nix
-        ../../modules/home/hypridle.nix
-        ../../modules/home/wallust.nix
-        ../../modules/home/waybar.nix
+        ../../modules/home/apps.nix
+        ../../modules/home/discord.nix
+        ../../modules/home/extras.nix
         ../../modules/home/foot.nix
         ../../modules/home/fuzzel.nix
-        ../../modules/home/mako.nix
-        ../../modules/home/discord.nix
-        ../../modules/home/zen-browser.nix
-        ../../modules/home/shell.nix
         ../../modules/home/gtk.nix
-        ../../modules/home/extras.nix
+        ../../modules/home/hypridle.nix
+        ../../modules/home/hyprland.nix
+        ../../modules/home/hyprlock.nix
+        ../../modules/home/hyprpaper.nix
+        ../../modules/home/mako.nix
+        ../../modules/home/shell/default.nix
+        ../../modules/home/spotify.nix
+        ../../modules/home/wallust.nix
+        ../../modules/home/waybar.nix
+        ../../modules/home/zen-browser.nix
     ];
 
     home.username = "blakec";

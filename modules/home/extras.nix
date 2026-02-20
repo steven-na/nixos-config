@@ -30,4 +30,5 @@
     ];
 
     services.cliphist.enable = true;
+    services.mpd-mpris.enable = true;
 }

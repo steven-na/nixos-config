@@ -3,16 +3,29 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        hyprland.url = "github:hyprwm/hyprland";
+        zen-browser = {
+            url = "github:0xc000022070/zen-browser-flake";
+            inputs.nixpkgs.follows = "nixpkgs";
+            inputs.home-manager.follows = "home-manager";
+        };
+        firefox-addons = {
+            url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
 
-        # Optional: for zen browser if not yet in nixpkgs
-        zen-browser.url = "github:0xc000022070/zen-browser-flake";
+        spicetify-nix = {
+            url = "github:Gerg-L/spicetify-nix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        hyprland.url = "github:hyprwm/hyprland";
+        nixvim.url = "github:steven-na/nixvim-config";
+        nixcord.url = "github:kaylorben/nixcord";
     };
 
     outputs =

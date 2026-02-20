@@ -1,14 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
     home.packages = with pkgs; [
-        bat
         btop
         cargo
         fastfetch
         fd
-        fzf
         git
         grc
+        inputs.nixvim.x86_64-linux.default
         jq
         just
         lazygit
