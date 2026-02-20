@@ -7,6 +7,7 @@
     programs.fish = {
         enable = true;
         interactiveShellInit = ''
+            set fish_greeting # Disable greeting
             # Restore wallust colors for shell env on new sessions
             if test -f ~/.cache/wallust/colors.fish
               source ~/.cache/wallust/colors.fish

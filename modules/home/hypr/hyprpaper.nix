@@ -1,12 +1,21 @@
-{ ... }:
+{ config, ... }:
+let
+    wp = "${config.home.homeDirectory}/wallpapers/default.jpg";
+in
 {
     services.hyprpaper = {
         enable = true;
         settings = {
+            ipc = "on";
             splash = false;
-            ipc = "on"; # required so set-wallpaper.sh can hot-swap via hyprctl
+            splash_offset = 2;
+
             preload = [ "~/wallpapers/default.jpg" ];
-            wallpaper = [ ",~/wallpapers/default.jpg" ];
+
+            wallpaper = [
+                "HDMI-A-1,${wp}"
+                "eDP-2,${wp}"
+            ];
         };
     };
 }

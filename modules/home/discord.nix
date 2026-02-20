@@ -1,15 +1,20 @@
-{ inputs, ... }:
+{
+    inputs,
+    pkgs,
+    ...
+}:
 {
     imports = [
         inputs.nixcord.homeModules.nixcord
     ];
 
+    home.packages = [
+        inputs.themecord.packages.${pkgs.stdenv.hostPlatform.system}.default
+    ];
+
     programs.nixcord = {
         enable = true;
         discord.vencord.enable = true;
-        quickCss = ''
-            @import url("wallust.css");
-        '';
         config = {
             useQuickCss = true;
             transparent = true;

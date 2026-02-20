@@ -162,7 +162,7 @@
                 # ];
                 userChrome = ''
                     /* Auto-theming via wallust — do not edit colors here directly */
-                    @import url("file:///home/%USERNAME%/.cache/wallust/zen-colors.css");
+                    @import url("file:///home/blakec/.cache/wallust/zen-colors.css");
 
                     /* Apply variables from wallust to Zen UI */
                     :root {

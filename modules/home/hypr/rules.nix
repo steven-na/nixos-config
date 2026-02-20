@@ -2,25 +2,61 @@
 {
     wayland.windowManager.hyprland.extraConfig = # hyprlang
         ''
-            # Bind D = Discord special
-            windowrulev2 = tile,class:(discord)
-            windowrulev2 = workspace special:discord silent,class:(discord)
+             # Discord -> special:discord
+             windowrule {
+                 name = discord
+                 match:class = discord
+                 
+                 workspace = special:discord silent
+             }  
 
-            # Bind O = Obsidian special
-            windowrulev2 = tile,class:(obsidian)
-            windowrulev2 = workspace special:obsidian silent,class:(obsidian)
+             # Obsidian -> special:obsidian
+             windowrule {
+                 name = obsidian
+                 match:class = obsidian
 
-            # Bind P = Spotify special
-            windowrulev2 = tile,class:(spotify)
-            windowrulev2 = workspace special:spotify silent,class:(spotify)
+                 workspace = special:obsidian silent
+             }
 
-            # Force floating window for steam friends
-            windowrulev2 = float, class:steam, initialTitle:Friends List
-            windowrulev2 = float, class:steam, initialTitle:Steam Settings
+             # Spotify -> special:spotify
+             windowrule {
+                 name = spotify
+                 match:class = (spotify)
+                 workspace = special:spotify silent
+                 tile = true
+             }
 
-            # Picture-in-picture floating and pinned
-            windowrulev2 = float, class:zen, initialTitle:"Picture-in-Picture"
-            windowrulev2 = pin, class:zen, initialTitle:"Picture-in-Picture"
-            windowrulev2 = opacity 0.0, class:zen, initialTitle:"Picture-in-Picture"
+             # Steam friends/settings -> float
+             windowrule {
+                 name = steam-friends
+                 match:class = (steam)
+                 match:initial_title = (Friends List)
+                 float = true
+             }
+
+             windowrule {
+                 name = steam-settings
+                 match:class = (steam)
+                 match:initial_title = (Steam Settings)
+                 float = true
+             }
+
+             # Zen PiP -> float + pin + opacity
+             windowrule {
+                 name = zen-pip
+                 match:class = (zen)
+                 match:initial_title = (Picture-in-Picture)
+                 float = true
+                 pin = true
+                 opacity = 0.0 0.0
+             }
+
+             windowrule {
+                name = wallpaper-picker
+                match:class = (wallpaper-picker)
+                center = true
+                float = true
+                size = 900 600
+            }
         '';
 }

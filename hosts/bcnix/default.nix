@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-    boot.kernelpackages = pkgs.linuxpackages_latest;
+    # boot.kernelPackages = pkgs.linuxPackages_latest;
     imports = [
         ./hardware-configuration.nix
         ../../modules/system/hyprland.nix
@@ -19,6 +19,8 @@
     networking.hostName = "bcnix";
     networking.networkmanager.enable = true;
 
+    virtualisation.docker.enable = false;
+
     services.blueman.enable = true;
 
     hardware.bluetooth = {
@@ -26,7 +28,7 @@
         settings = {
             General = {
                 Experimental = true;
-                DisableSercureConnections = true;
+                DisableSecureConnections = true;
                 JustWorksRepairing = "always";
             };
         };
@@ -72,5 +74,5 @@
         options = "--delete-older-than 14d";
     };
 
-    system.stateVersion = "26.05";
+    system.stateVersion = "25.05";
 }

@@ -795,6 +795,7 @@
         "nixvim": "nixvim",
         "nur": "nur",
         "spicetify-nix": "spicetify-nix",
+        "themecord": "themecord",
         "zen-browser": "zen-browser"
       }
     },
@@ -861,6 +862,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "themecord": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1743970059,
+        "narHash": "sha256-vwrIULP9VmYqhNtHcNaPat6OjKqbDgwf3qSypOusG9c=",
+        "owner": "danihek",
+        "repo": "themecord",
+        "rev": "2117717f830c4847eafc450319de26ae09ac9277",
+        "type": "github"
+      },
+      "original": {
+        "owner": "danihek",
+        "repo": "themecord",
         "type": "github"
       }
     },

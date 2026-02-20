@@ -15,12 +15,12 @@
 
         # Critical: lets systemd services (hypridle, etc.) see $PATH
         systemd.variables = [ "--all" ];
+        extraConfig = # hyprlang
+            ''
+                monitor=desc:BOE NE160WUM-NX2, 1920x1200@165, 0x0, 1
+                monitor=desc:ASUSTek COMPUTER INC VG259QM SALMQS078467, 1920x1080@240, 1920x0, 0.8, transform, 1
+            '';
         settings = {
-            monitor = [
-                "desc:BOE NE160WUM-NX2, 1920x1200@165, 0x0, 1"
-                "desc:ASUSTek COMPUTER INC VG259QM SALMQS078467, 1920x1080@240, 1920x0, 0.8, transform, 1"
-            ];
-
             exec-once = [
                 "waybar"
                 "mako"
@@ -68,7 +68,7 @@
 
         };
         plugins = [
-            pkgs.hyprlandPlugins.hypr-dynamic-cursors
+            # pkgs.hyprlandPlugins.hypr-dynamic-cursors
         ];
     };
 }

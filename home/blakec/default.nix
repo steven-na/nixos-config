@@ -6,15 +6,16 @@
         ../../modules/home/extras.nix
         ../../modules/home/foot.nix
         ../../modules/home/fuzzel.nix
+        ../../modules/home/git.nix
         ../../modules/home/gtk.nix
         ../../modules/home/hypr
         ../../modules/home/mako.nix
+        ../../modules/home/scripts
         ../../modules/home/shell/default.nix
         ../../modules/home/spotify.nix
         ../../modules/home/wallust.nix
         ../../modules/home/waybar.nix
         ../../modules/home/zen-browser.nix
-        ../../modules/home/git.nix
     ];
 
     home.username = "blakec";
@@ -39,5 +40,5 @@
         TERMINAL = "foot";
     };
 
-    home.stateVersion = "26.05";
+    home.stateVersion = "25.05";
 }

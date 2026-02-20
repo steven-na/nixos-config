@@ -2,6 +2,7 @@
 {
     home.packages = with pkgs; [
         cargo
+        chafa
         comma
         deadnix
         fastfetch

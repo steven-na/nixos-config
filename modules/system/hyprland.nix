@@ -47,6 +47,7 @@
         enable = true;
         user = "blakec";
         network.listenAddress = "any"; # if you want to allow non-localhost connections
+        openFirewall = false;
     };
     systemd.services.mpd.environment = {
         XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.blakec.uid}";
@@ -66,8 +67,8 @@
         enable = true;
         settings = {
             default_session = {
-                command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland";
-                user = "greeter";
+                command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${pkgs.hyprland}/bin/start-hyprland";
+                user = "blakec";
             };
         };
     };

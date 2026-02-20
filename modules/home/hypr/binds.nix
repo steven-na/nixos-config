@@ -9,7 +9,7 @@
             # Window actions
             "$mainMod, C, killactive"
             "$mainMod, J, togglesplit"
-            "$mainMod, V, togglefloating"
+            "$mainMod CTRL, V, togglefloating"
             "$mainMod, F, fullscreen, 1"
             "$mainMod CTRL, F, fullscreen, 0"
 
@@ -20,7 +20,7 @@
             "$mainMod SHIFT, F, exec, zen-beta"
 
             #cliphist
-            "$mainMod, C, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
+            "$mainMod, V, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
 
             # Screenshots
             ", Print, exec, ~/.local/bin/screenshot.sh area"
@@ -28,10 +28,11 @@
             "$mainMod SHIFT, Print, exec, ~/.local/bin/screenshot.sh window"
 
             # Wallpaper picker
-            "$mainMod, W, exec, ls ~/wallpapers | fuzzel --dmenu | xargs -I{} ~/.local/bin/set-wallpaper.sh ~/wallpapers/{}"
+            # "$mainMod, W, exec, ls ~/wallpapers | fuzzel --dmenu | xargs -I{} ~/.local/bin/set-wallpaper.sh ~/wallpapers/{}"
+            "$mainMod, W, exec, foot --app-id wallpaper-picker -e ~/.local/bin/pick-wallpaper.sh"
 
             # Lock
-            "$mainMod, L, exec, loginctl lock-session"
+            "$mainMod SHIFT, L, exec, loginctl lock-session"
 
             # Focus movement (arrows)
             "$mainMod, left, movefocus, l"
@@ -46,7 +47,7 @@
             "$mainMod, j, movefocus, d"
 
             # super + R, arrow keys resize
-            "$mainMod, R, submap, resize"
+            "$mainMod CTRL, R, submap, resize"
 
             # Special workspaces
             "$mainMod, S, togglespecialworkspace, magic"
@@ -104,19 +105,28 @@
         submap = "reset";
 
         # Resize submap block (must be raw text after settings)
-        extraConfig = ''
-            submap = resize
-            binde = , H, resizeactive, -20 0
-            binde = , J, resizeactive, 0 20
-            binde = , K, resizeactive, 0 -20
-            binde = , L, resizeactive, 20 0
-            binde = , left, resizeactive, -20 0
-            binde = , down, resizeactive, 0 20
-            binde = , up, resizeactive, 0 -20
-            binde = , right, resizeactive, 20 0
-            bind = , Escape, submap, reset
-            bind = , Return, submap, reset
-            submap = reset
-        '';
     };
+    wayland.windowManager.hyprland.extraConfig = ''
+        # --- Resize submap ---
+        submap = resize
+
+        binde = , H, resizeactive, -20 0
+        binde = , J, resizeactive, 0 20
+        binde = , K, resizeactive, 0 -20
+        binde = , L, resizeactive, 20 0
+
+        binde = , left,  resizeactive, -20 0
+        binde = , down,  resizeactive, 0 20
+        binde = , up,    resizeactive, 0 -20
+        binde = , right, resizeactive, 20 0
+
+        # exit resize mode
+        bind = , Escape, submap, reset
+        bind = , Return, submap, reset
+
+        # safety: any other key exits resize mode
+        bind = , catchall, submap, reset
+
+        submap = reset
+    '';
 }
