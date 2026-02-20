@@ -13,8 +13,9 @@
             inputs.nixpkgs.follows = "nixpkgs";
             inputs.home-manager.follows = "home-manager";
         };
-        firefox-addons = {
-            url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+
+        nur = {
+            url = "github:nix-community/NUR";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
@@ -37,11 +38,15 @@
             ...
         }@inputs:
         {
-            nixosConfigurations.blakec = nixpkgs.lib.nixosSystem {
+            nixosConfigurations.bcnix = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 specialArgs = { inherit inputs; };
                 modules = [
-                    ./hosts/blakec
+                    {
+                        nixpkgs.overlays = [ inputs.nur.overlays.default ];
+                        nixpkgs.config.allowUnfree = true;
+                    }
+                    ./hosts/bcnix
                     home-manager.nixosModules.home-manager
                     {
                         home-manager.useGlobalPkgs = true;

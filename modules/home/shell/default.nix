@@ -79,4 +79,10 @@
     programs.zsh = {
         enable = true; # Keep as fallback shell
     };
+
+    programs.direnv = {
+        enable = true;
+        enableFishIntegration = true;
+        nix-direnv.enable = true; # caches shells so reloads are instant
+    };
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
     programs.hyprland = {
         enable = true;
@@ -11,6 +11,17 @@
         enable = true;
         extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
         # xdg-desktop-portal-hyprland is added automatically by programs.hyprland
+    };
+
+    hardware = {
+        graphics.enable = true;
+        nvidia = {
+            modesetting.enable = true;
+            powerManagement.enable = false;
+            powerManagement.finegrained = false;
+            open = false;
+            nvidiaSettings = true;
+        };
     };
 
     # PAM for hyprlock authentication
@@ -32,6 +43,14 @@
     # D-Bus
     services.dbus.enable = true;
 
+    services.mpd = {
+        enable = true;
+        user = "blakec";
+        network.listenAddress = "any"; # if you want to allow non-localhost connections
+    };
+    systemd.services.mpd.environment = {
+        XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.blakec.uid}";
+    };
     # Enable Wayland in Electron/Chromium apps
     environment.sessionVariables = {
         NIXOS_OZONE_WL = "1";
@@ -47,14 +66,14 @@
         enable = true;
         settings = {
             default_session = {
-                command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+                command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland";
                 user = "greeter";
             };
         };
     };
 
     environment.systemPackages = with pkgs; [
-        greetd.tuigreet
+        tuigreet
         polkit_gnome # polkit auth agent
         xdg-utils
         xdg-user-dirs

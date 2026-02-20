@@ -3,13 +3,13 @@
     inputs,
     ...
 }:
-
 {
     imports = [
         inputs.zen-browser.homeModules.beta
     ];
     programs.zen-browser = {
         enable = true;
+        suppressXdgMigrationWarning = true;
         profiles.default =
             let
                 containers = {
@@ -91,7 +91,7 @@
                 spacesForce = true;
                 inherit containers pins spaces;
                 id = 0;
-                sine.enable = true;
+                # sine.enable = true;
                 keyboardShortcuts = [
                     {
                         id = "key_selectTab1";
@@ -139,11 +139,11 @@
                         modifiers.control = true;
                     }
                 ];
-                extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
+                extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
                     ublock-origin
                     proton-pass
                     enhancer-for-youtube
-                    zen-internet
+                    # zen-internet
                     darkreader
                     sponsorblock
                     dearrow
@@ -160,6 +160,35 @@
                 #     "1e86cf37-a127-4f24-b919-d265b5ce29a0"
                 #     "81fcd6b3-f014-4796-988f-6c3cb3874db8"
                 # ];
+                userChrome = ''
+                    /* Auto-theming via wallust — do not edit colors here directly */
+                    @import url("file:///home/%USERNAME%/.cache/wallust/zen-colors.css");
+
+                    /* Apply variables from wallust to Zen UI */
+                    :root {
+                      --zen-primary-color: var(--zen-primary-color, #cba6f7) !important;
+                    }
+
+                    /* Transparent/blurred tab bar — i3 vibes */
+                    #TabsToolbar {
+                      background-color: color-mix(
+                        in srgb,
+                        var(--toolbar-bgcolor) 85%,
+                        transparent
+                      ) !important;
+                      backdrop-filter: blur(12px) !important;
+                    }
+
+                    /* Transparent toolbar */
+                    #nav-bar {
+                      background-color: color-mix(
+                        in srgb,
+                        var(--toolbar-bgcolor) 80%,
+                        transparent
+                      ) !important;
+                      backdrop-filter: blur(12px) !important;
+                    }
+                '';
                 search = {
                     force = true;
                     default = "ddg";
@@ -207,6 +236,7 @@
                     "browser.tabs.groups.hoverPreview.enabled" = true;
                     "browser.newtabpage.activity-stream.feeds.topsites" = false;
                     "browser.topsites.contile.enabled" = false;
+                    "widget.use-xdg-desktop-portal.file-picker" = 1;
                     "zen.welcome-screen.seen" = true;
 
                     # Transparency

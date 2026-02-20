@@ -7,10 +7,10 @@
     programs.nixcord = {
         enable = true;
         discord.vencord.enable = true;
+        quickCss = ''
+            @import url("wallust.css");
+        '';
         config = {
-            themeLinks = [
-                "https://raw.githubusercontent.com/orblazer/discord-nordic/master/nordic.vencord.css"
-            ];
             useQuickCss = true;
             transparent = true;
             frameless = true;

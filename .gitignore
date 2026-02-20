@@ -1,1 +1,4 @@
-flake.lock
+wallpapers/*
+!wallpapers/.keep
+result
+.direnv

@@ -4,13 +4,14 @@
         ./binds.nix
         ./rules.nix
         ./styling.nix
+
+        ./hypridle.nix
+        ./hyprlock.nix
+        ./hyprpaper.nix
     ];
 
     wayland.windowManager.hyprland = {
         enable = true;
-        # Use packages from the NixOS module to avoid version mismatches
-        package = null;
-        portalPackage = null;
 
         # Critical: lets systemd services (hypridle, etc.) see $PATH
         systemd.variables = [ "--all" ];
@@ -40,12 +41,9 @@
             binds.movefocus_cycles_fullscreen = 1;
 
             env = [
-                "env = WLR_NO_HARDWARE_CURSORS,1"
-                "EGL_PLAYFORM=wayland"
-                "OZONE_PLAYFORM=wayland"
-            ];
-            plugins = [
-                pkgs.hyprlandPlugins.hypr-dynamic-cursors
+                "WLR_NO_HARDWARE_CURSORS,1"
+                "EGL_PLATFORM,wayland"
+                "OZONE_PLATFORM,wayland"
             ];
 
             dwindle = {
@@ -67,6 +65,10 @@
                 vrr = 1;
                 enable_swallow = true;
             };
+
         };
+        plugins = [
+            pkgs.hyprlandPlugins.hypr-dynamic-cursors
+        ];
     };
 }

@@ -102,21 +102,21 @@
 
         # Resize submap
         submap = "reset";
-    };
 
-    # Resize submap block (must be raw text after settings)
-    extraConfig = ''
-        submap = resize
-        binde = , H, resizeactive, -20 0
-        binde = , J, resizeactive, 0 20
-        binde = , K, resizeactive, 0 -20
-        binde = , L, resizeactive, 20 0
-        binde = , left, resizeactive, -20 0
-        binde = , down, resizeactive, 0 20
-        binde = , up, resizeactive, 0 -20
-        binde = , right, resizeactive, 20 0
-        bind = , Escape, submap, reset
-        bind = , Return, submap, reset
-        submap = reset
-    '';
+        # Resize submap block (must be raw text after settings)
+        extraConfig = ''
+            submap = resize
+            binde = , H, resizeactive, -20 0
+            binde = , J, resizeactive, 0 20
+            binde = , K, resizeactive, 0 -20
+            binde = , L, resizeactive, 20 0
+            binde = , left, resizeactive, -20 0
+            binde = , down, resizeactive, 0 20
+            binde = , up, resizeactive, 0 -20
+            binde = , right, resizeactive, 20 0
+            bind = , Escape, submap, reset
+            bind = , Return, submap, reset
+            submap = reset
+        '';
+    };
 }

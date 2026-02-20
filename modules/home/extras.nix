@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
     home.packages = with pkgs; [
         # Hyprland ecosystem
@@ -31,4 +31,6 @@
 
     services.cliphist.enable = true;
     services.mpd-mpris.enable = true;
+
+    services.easyeffects.enable = true;
 }
