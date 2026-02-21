@@ -20,6 +20,5 @@
         statix
         unzip
         wget
-        yazi
     ];
 }

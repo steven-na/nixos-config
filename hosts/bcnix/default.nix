@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
     # boot.kernelPackages = pkgs.linuxPackages_latest;
     imports = [
@@ -46,6 +46,10 @@
     };
 
     programs.fish.enable = true;
+
+    environment.systemPackages = [
+        inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
+    ];
 
     nixpkgs.config.allowUnfree = true;
 

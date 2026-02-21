@@ -17,7 +17,7 @@
             "$mainMod, Q, exec, foot"
             "$mainMod, M, exec, foot -e yazi"
             "$mainMod, R, exec, fuzzel"
-            "$mainMod SHIFT, F, exec, zen-beta"
+            "$mainMod SHIFT, F, exec, zen-beta --profile ~/.config/zen/default/"
 
             #cliphist
             "$mainMod, V, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"

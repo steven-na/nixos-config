@@ -63,6 +63,7 @@
     # ── foot-colors.ini ─────────────────────────────────────────────────
     xdg.configFile."wallust/templates/foot-colors.ini".text = ''
         [colors]
+        alpha=0.85
         background={{ background | strip }}
         foreground={{ foreground | strip }}
         regular0={{ color0 | strip }}
@@ -118,7 +119,7 @@
     xdg.configFile."wallust/templates/hyprland-colors.conf".text = ''
         general {
           col.active_border = rgba({{ color1 | strip }}ff) rgba({{ color2 | strip }}ff) 45deg
-          col.inactive_border = rgba({{ color0 | strip }}aa)
+          col.inactive_border = rgba({{ color0 | strip }}00)
         }
         decoration {
           shadow {

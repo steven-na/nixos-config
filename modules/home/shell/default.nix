@@ -24,6 +24,7 @@
             cd = "z"; # zoxide
             grep = "rg";
             find = "fd";
+            zen = "zen-beta --profile ~/.config/zen/default/";
         };
     };
 
@@ -85,5 +86,16 @@
         enable = true;
         enableFishIntegration = true;
         nix-direnv.enable = true; # caches shells so reloads are instant
+    };
+
+    programs.yazi = {
+        enable = true;
+        shellWrapperName = "y";
+        settings = {
+            mgr = {
+                show_hidden = true;
+                sort_dir_first = true;
+            };
+        };
     };
 }

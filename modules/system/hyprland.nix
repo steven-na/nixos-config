@@ -46,7 +46,7 @@
     services.mpd = {
         enable = true;
         user = "blakec";
-        network.listenAddress = "any"; # if you want to allow non-localhost connections
+        settings.bind_to_address = "any"; # if you want to allow non-localhost connections
         openFirewall = false;
     };
     systemd.services.mpd.environment = {

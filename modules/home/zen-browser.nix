@@ -139,27 +139,41 @@
                         modifiers.control = true;
                     }
                 ];
-                extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-                    ublock-origin
-                    proton-pass
-                    enhancer-for-youtube
-                    # zen-internet
-                    darkreader
-                    sponsorblock
-                    dearrow
-                ];
-                # mods = [ # Doesn't work with nebula
-                #     "0c3d77bf-44fc-47a6-a183-39205dfa5f7e"
-                #     "a6335949-4465-4b71-926c-4a52d34bc9c0"
-                #     "642854b5-88b4-4c40-b256-e035532109df"
-                #     "c01d3e22-1cee-45c1-a25e-53c0f180eea8"
-                #     "ad97bb70-0066-4e42-9b5f-173a5e42c6fc"
-                #     "6f11c932-b992-433e-8c80-56a613cc511e"
-                #     "e74cb40a-f3b8-445a-9826-1b1b6e41b846"
-                #     "253a3a74-0cc4-47b7-8b82-996a64f030d5"
-                #     "1e86cf37-a127-4f24-b919-d265b5ce29a0"
-                #     "81fcd6b3-f014-4796-988f-6c3cb3874db8"
+                extensions.packages =
+                    let
+                        addons = pkgs.nur.repos.rycee.firefox-addons;
+                    in
+                    [
+                        addons.ublock-origin
+                        addons.proton-pass
+                        addons.enhancer-for-youtube
+                        addons.darkreader
+                        addons.sponsorblock
+                        addons.dearrow
+                        addons.zen-internet
+                    ];
+                # extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+                #     ublock-origin
+                #     proton-pass
+                #     enhancer-for-youtube
+                #     # zen-internet
+                #     darkreader
+                #     sponsorblock
+                #     dearrow
                 # ];
+                mods = [
+                    # Doesn't work with nebula
+                    "0c3d77bf-44fc-47a6-a183-39205dfa5f7e"
+                    "a6335949-4465-4b71-926c-4a52d34bc9c0"
+                    "642854b5-88b4-4c40-b256-e035532109df"
+                    "c01d3e22-1cee-45c1-a25e-53c0f180eea8"
+                    "ad97bb70-0066-4e42-9b5f-173a5e42c6fc"
+                    "6f11c932-b992-433e-8c80-56a613cc511e"
+                    "e74cb40a-f3b8-445a-9826-1b1b6e41b846"
+                    "253a3a74-0cc4-47b7-8b82-996a64f030d5"
+                    "1e86cf37-a127-4f24-b919-d265b5ce29a0"
+                    "81fcd6b3-f014-4796-988f-6c3cb3874db8"
+                ];
                 userChrome = ''
                     /* Auto-theming via wallust — do not edit colors here directly */
                     @import url("file:///home/blakec/.cache/wallust/zen-colors.css");
