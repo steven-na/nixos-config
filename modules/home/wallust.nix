@@ -216,16 +216,17 @@
                 themecord -w
 
                 # Swap wallpaper on all monitors via hyprpaper IPC
-                if pgrep -x hyprpaper > /dev/null; then
-                  # hyprctl hyprpaper preload "$WALLPAPER"
-                  hyprctl -j monitors \
-                    | jq -r '.[].name' \
-                    | while read -r monitor; do
-                        hyprctl hyprpaper wallpaper "$monitor,$WALLPAPER"
-                      done
-                else
-                  echo "hyprpaper not running, skipping IPC" >&2
-                fi
+                # if pgrep -x hyprpaper > /dev/null; then
+                #   # hyprctl hyprpaper preload "$WALLPAPER"
+                #   hyprctl -j monitors \
+                #     | jq -r '.[].name' \
+                #     | while read -r monitor; do
+                #         hyprctl hyprpaper wallpaper "$monitor,$WALLPAPER"
+                #       done
+                # else
+                #   echo "hyprpaper not running, skipping IPC" >&2
+                # fi
+                swww img $WALLPAPER --transition-type center
 
                 notify-send \
                   --app-name="Wallpaper" \

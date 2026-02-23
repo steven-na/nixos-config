@@ -28,8 +28,10 @@
             "$mainMod SHIFT, Print, exec, ~/.local/bin/screenshot.sh window"
 
             # Wallpaper picker
-            # "$mainMod, W, exec, ls ~/wallpapers | fuzzel --dmenu | xargs -I{} ~/.local/bin/set-wallpaper.sh ~/wallpapers/{}"
             "$mainMod, W, exec, foot --app-id wallpaper-picker -e ~/.local/bin/pick-wallpaper.sh"
+
+            # Script launcher
+            "$mainMod, E, exec, foot --app-id script-launcher -e ~/.local/bin/script-launcher.sh"
 
             # Lock
             "$mainMod SHIFT, L, exec, loginctl lock-session"

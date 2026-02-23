@@ -7,7 +7,9 @@
 
         ./hypridle.nix
         ./hyprlock.nix
-        ./hyprpaper.nix
+        # ./hyprpaper.nix
+        ./swww.nix
+        ./waybar.nix
     ];
 
     wayland.windowManager.hyprland = {
@@ -17,13 +19,14 @@
         extraConfig = # hyprlang
             ''
                 monitor=desc:BOE NE160WUM-NX2, 1920x1200@165, 0x0, 1
-                monitor=desc:ASUSTek COMPUTER INC VG259QM SALMQS078467, 1920x1080@144, auto, 0.8, transform, 1
+                monitor=desc:ASUSTek COMPUTER INC VG259QM SALMQS078467, 1920x1080@144, auto, 1, transform, 1
             '';
         settings = {
             exec-once = [
                 "waybar"
                 "mako"
-                "hyprpaper"
+                # "hyprpaper"
+                "swww-daemon"
                 "hypridle"
                 "hyprpolkitagent"
                 # run wallust on last used wallpaper at login
@@ -41,6 +44,10 @@
 
             cursor = {
                 no_hardware_cursors = 1;
+            };
+
+            debug = {
+                disable_logs = false;
             };
 
             env = [

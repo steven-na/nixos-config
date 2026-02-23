@@ -48,15 +48,41 @@
                  match:initial_title = (Picture-in-Picture)
                  float = true
                  pin = true
-                 opacity = 0.0 0.0
+                 opacity = 0.0 0.h0
              }
 
-             windowrule {
+            windowrule {
                 name = wallpaper-picker
                 match:class = (wallpaper-picker)
                 center = true
                 float = true
                 size = 900 600
+            }
+
+            windowrule {
+                name = script-launcher
+                match:class = (script-launcher)
+                center = true
+                float = true
+            }
+
+            windowrule {
+                name = no-idle-1
+                match:class = (*)
+                idle_inhibit = fullscreen
+                no_dim = true
+            }
+            windowrule {
+                name = no-idle-2
+                match:title = (*)
+                idle_inhibit = fullscreen
+                no_dim = true
+            }
+            windowrule {
+                name = no-idle-3
+                match:fullscreen = true
+                idle_inhibit = fullscreen
+                no_dim = true
             }
         '';
 }

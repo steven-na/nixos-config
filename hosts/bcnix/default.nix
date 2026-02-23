@@ -21,6 +21,12 @@
 
     virtualisation.docker.enable = false;
 
+    services.syncthing = {
+        enable = true;
+        user = "blakec";
+        configDir = "/home/blakec/.config/syncthing";
+    };
+
     services.blueman.enable = true;
 
     hardware.bluetooth = {

@@ -27,7 +27,7 @@
                 };
                 "custom/wallpaper" = {
                     format = " ";
-                    on-click = "ls ~/wallpapers | fuzzel --dmenu | xargs -I{} ~/.local/bin/set-wallpaper.sh ~/wallpapers/{}";
+                    on-click = "foot --app-id wallpaper-picker -e ~/.local/bin/pick-wallpaper.sh";
                     tooltip = false;
                 };
             }

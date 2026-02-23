@@ -14,7 +14,6 @@
         ../../modules/home/shell/default.nix
         ../../modules/home/spotify.nix
         ../../modules/home/wallust.nix
-        ../../modules/home/waybar.nix
         ../../modules/home/zen-browser.nix
     ];
 
@@ -36,7 +35,7 @@
     # Env vars
     home.sessionVariables = {
         EDITOR = "nvim";
-        BROWSER = "zen";
+        BROWSER = "zen-beta";
         TERMINAL = "foot";
     };
 

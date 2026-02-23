@@ -35,9 +35,9 @@
             add_newline = false;
             format = "$directory$git_branch$git_status$character";
             character = {
-                success_symbol = "[❯](bold green)";
-                error_symbol = "[❯](bold red)";
-                vicmd_symbol = "[❮](bold blue)";
+                success_symbol = "[➔](bold green)";
+                error_symbol = "[➔](bold red)";
+                vicmd_symbol = "[➠](bold blue)";
             };
             directory = {
                 truncation_length = 3;
