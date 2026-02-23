@@ -25,7 +25,7 @@
         };
 
         hyprland.url = "github:hyprwm/hyprland";
-        nixvim.url = "github:steven-na/nixvim-config";
+        nixcats.url = "github:steven-na/nixcats-config";
         nixcord.url = "github:kaylorben/nixcord";
         themecord = {
             url = "github:danihek/themecord";

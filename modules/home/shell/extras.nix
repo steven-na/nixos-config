@@ -9,7 +9,7 @@
         fd
         git
         grc
-        inputs.nixvim.packages.x86_64-linux.default
+        inputs.nixcats.packages.x86_64-linux.default
         jq
         just
         lazygit
