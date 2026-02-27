@@ -87,6 +87,9 @@
         enableFishIntegration = true;
         nix-direnv.enable = true; # caches shells so reloads are instant
     };
+    services.lorri = {
+        enable = true;
+    };
 
     programs.yazi = {
         enable = true;

@@ -19,6 +19,11 @@
     networking.hostName = "bcnix";
     networking.networkmanager.enable = true;
 
+    networking.firewall.allowedTCPPorts = [
+        22000
+    ];
+    networking.firewall.allowedUDPPorts = [ 21027 ];
+
     virtualisation.docker.enable = false;
 
     services.syncthing = {

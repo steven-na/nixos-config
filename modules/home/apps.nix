@@ -4,6 +4,7 @@
         # Drafting
         kicad
         freecad-wayland
+        gimp
 
         # Notes
         obsidian

@@ -3,7 +3,7 @@
     programs.git = {
         enable = true;
         settings = {
-            user.email = "blakescampbell04@gmail.com";
+            user.email = "bstevencamp@gmail.com";
             user.name = "steven-na";
             init.defaultBranch = "main";
             pull.rebase = true;

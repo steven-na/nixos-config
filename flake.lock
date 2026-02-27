@@ -471,11 +471,11 @@
         "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1771841904,
-        "narHash": "sha256-CLXqVdueAHsbXrt400noB/hMiABy7tJ9BUMl2SNRjHY=",
+        "lastModified": 1771878933,
+        "narHash": "sha256-W2b605n2uRUzha3bk2+GTwTFwZNUoHL0dRpCJiqpS20=",
         "owner": "steven-na",
         "repo": "nixcats-config",
-        "rev": "160503ee74070229823391525f7479a9dd94ba4e",
+        "rev": "90fe684ea2b2b25d6a1524948f7c402466f45a5d",
         "type": "github"
       },
       "original": {
