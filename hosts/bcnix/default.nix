@@ -1,8 +1,14 @@
-{ pkgs, inputs, ... }:
+{
+    pkgs,
+    inputs,
+    config,
+    ...
+}:
 {
     # boot.kernelPackages = pkgs.linuxPackages_latest;
     imports = [
         ./hardware-configuration.nix
+        ./vpn.nix
         ../../modules/system/hyprland.nix
         ../../modules/system/fonts.nix
         ../../modules/system/locale.nix
@@ -19,10 +25,14 @@
     networking.hostName = "bcnix";
     networking.networkmanager.enable = true;
 
+    networking.firewall.checkReversePath = false;
     networking.firewall.allowedTCPPorts = [
         22000
     ];
-    networking.firewall.allowedUDPPorts = [ 21027 ];
+    networking.firewall.allowedUDPPorts = [
+        21027
+        51820
+    ];
 
     virtualisation.docker.enable = false;
 

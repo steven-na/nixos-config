@@ -7,6 +7,7 @@
         deadnix
         fastfetch
         fd
+        file
         git
         grc
         inputs.nixcats.packages.x86_64-linux.default

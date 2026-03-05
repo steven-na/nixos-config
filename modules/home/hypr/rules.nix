@@ -84,5 +84,7 @@
                 idle_inhibit = fullscreen
                 no_dim = true
             }
+
+            layerrule = blur on, match:namespace waybar
         '';
 }

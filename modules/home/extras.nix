@@ -27,6 +27,7 @@
         # Utilities
         brightnessctl # backlight (laptop)
         libnotify # notify-send
+        python315
     ];
 
     services.cliphist.enable = true;

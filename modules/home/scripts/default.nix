@@ -14,6 +14,7 @@ let
         ./color_picker.nix
         ./service_manager.nix
         ./kill_process.nix
+        ./toggle_vpn.nix
     ];
 
     entries = config.scriptLauncher.scripts;

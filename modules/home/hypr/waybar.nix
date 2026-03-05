@@ -14,7 +14,7 @@
                 modules-right = [
                     "pulseaudio"
                     "network"
-                    "battery" # remove if desktop
+                    "battery"
                     "tray"
                     "custom/wallpaper"
                 ];
