@@ -14,6 +14,10 @@
         template = "waybar-colors.css"
         target = "~/.config/waybar/colors.css"
 
+        [templates.ags]
+        template = "ags.css"
+        target = "~/.cache/wallust/ags-colors.css"
+
         [templates.foot-colors]
         template = "foot-colors.ini"
         target = "~/.cache/wallust/foot-colors.ini"
@@ -63,7 +67,7 @@
     # ── foot-colors.ini ─────────────────────────────────────────────────
     xdg.configFile."wallust/templates/foot-colors.ini".text = ''
         [colors]
-        alpha=0.85
+        alpha=0.6
         background={{ background | strip }}
         foreground={{ foreground | strip }}
         regular0={{ color0 | strip }}
@@ -143,6 +147,30 @@
     '';
 
     # ── Discord/Vesktop CSS template ─────────────────────────────────────
+    xdg.configFile."wallust/templates/ags.css".text = ''
+        :root {
+            --color0:    {{ color0 }};
+            --color1:    {{ color1 }};
+            --color2:    {{ color2 }};
+            --color3:    {{ color3 }};
+            --color4:    {{ color4 }};
+            --color5:    {{ color5 }};
+            --color6:    {{ color6 }};
+            --color7:    {{ color7 }};
+            --color8:    {{ color8 }};
+            --color9:    {{ color9 }};
+            --color10:   {{ color10 }};
+            --color11:   {{ color11 }};
+            --color12:   {{ color12 }};
+            --color13:   {{ color13 }};
+            --color14:   {{ color14 }};
+            --color15:   {{ color15 }};
+            --background: {{ background }};
+            --foreground: {{ foreground }};
+        }
+    '';
+
+    # ── Discord/Vesktop CSS template ─────────────────────────────────────
     xdg.configFile."wallust/templates/discord.css".text = ''
 
         @import url('https://s-k-y-l-i.github.io/discord-themes/Theme%20code/responsive.css');
@@ -209,23 +237,19 @@
                 # Reload mako
                 makoctl reload 2>/dev/null || true
 
-                # Reload hyprland (picks up new hyprland-colors.conf)
+                # Reload hyprland
                 hyprctl reload 2>/dev/null || true
 
-                # Update discord theme
+                # Reload discord
                 themecord -w
 
-                # Swap wallpaper on all monitors via hyprpaper IPC
-                # if pgrep -x hyprpaper > /dev/null; then
-                #   # hyprctl hyprpaper preload "$WALLPAPER"
-                #   hyprctl -j monitors \
-                #     | jq -r '.[].name' \
-                #     | while read -r monitor; do
-                #         hyprctl hyprpaper wallpaper "$monitor,$WALLPAPER"
-                #       done
-                # else
-                #   echo "hyprpaper not running, skipping IPC" >&2
-                # fi
+                # Reload ags
+                # ~/.config/ags/reload.sh
+                ags quit &>/dev/null || true
+                sleep 0.3
+                nohup ags run ~/.config/ags/ &
+
+                # Update wallpaper
                 swww img $WALLPAPER --transition-type center
 
                 notify-send \

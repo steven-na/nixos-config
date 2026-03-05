@@ -24,8 +24,12 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        claude-code.url = "github:sadjow/claude-code-nix";
+
         hyprland.url = "github:hyprwm/hyprland";
-        nixcats.url = "github:steven-na/nixcats-config";
+        ags.url = "github:aylur/ags";
+        astal.url = "github:aylur/astal";
+        vimconf.url = "github:steven-na/nixos-nvim-config";
         nixcord.url = "github:kaylorben/nixcord";
         themecord = {
             url = "github:danihek/themecord";
@@ -38,7 +42,7 @@
             self,
             nixpkgs,
             home-manager,
-            hyprland,
+            claude-code,
             ...
         }@inputs:
         {
@@ -47,7 +51,10 @@
                 specialArgs = { inherit inputs; };
                 modules = [
                     {
-                        nixpkgs.overlays = [ inputs.nur.overlays.default ];
+                        nixpkgs.overlays = [
+                            inputs.nur.overlays.default
+                            claude-code.overlays.default
+                        ];
                         nixpkgs.config.allowUnfree = true;
                     }
                     ./hosts/bcnix

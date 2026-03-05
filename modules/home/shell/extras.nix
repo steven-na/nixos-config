@@ -10,7 +10,8 @@
         file
         git
         grc
-        inputs.nixcats.packages.x86_64-linux.default
+        inputs.vimconf.packages.x86_64-linux.default
+        claude-code
         jq
         just
         lazygit

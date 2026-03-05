@@ -13,6 +13,8 @@
         # xdg-desktop-portal-hyprland is added automatically by programs.hyprland
     };
 
+    services.xserver.videoDrivers = [ "nvidia" ];
+
     hardware = {
         graphics.enable = true;
         nvidia = {

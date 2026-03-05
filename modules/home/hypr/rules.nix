@@ -85,6 +85,7 @@
                 no_dim = true
             }
 
-            layerrule = blur on, match:namespace waybar
+            layerrule = blur on, match:namespace bar
+            layerrule = blur on, match:namespace hover-popup
         '';
 }

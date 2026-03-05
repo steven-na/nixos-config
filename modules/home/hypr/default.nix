@@ -9,7 +9,8 @@
         ./hyprlock.nix
         # ./hyprpaper.nix
         ./swww.nix
-        ./waybar.nix
+        # ./waybar.nix
+        ./ags
     ];
 
     wayland.windowManager.hyprland = {
@@ -23,9 +24,8 @@
             '';
         settings = {
             exec-once = [
-                "waybar"
+                "~/.config/ags/reload.sh"
                 "mako"
-                # "hyprpaper"
                 "swww-daemon"
                 "hypridle"
                 "hyprpolkitagent"
@@ -34,6 +34,7 @@
                 "discord"
                 "spotify"
                 "obsidian"
+                "systemctl stop wg-wg0-user"
             ];
 
             general = {
