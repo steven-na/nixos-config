@@ -28,7 +28,6 @@ window:not(.hover-popup-window) {
   .workspace-dot {
     min-width: 24px;
     min-height: 24px;
-    max-width: 24px;
     padding: 0;
     border-radius: 50%;
     background-color: color-mix(in srgb, var(--background) 60%, transparent);
@@ -127,6 +126,96 @@ window.hover-popup-window {
 
 .popup-inner {
   padding: 8px;
+}
+
+.music-player {
+  padding: 0 4px;
+  color: var(--color4);
+
+  label {
+    font-size: 13px;
+  }
+
+  .music-player-count {
+    font-size: 11px;
+    opacity: 0.7;
+  }
+}
+
+.music-popover {
+  min-width: 250px;
+
+  .music-source {
+    margin-bottom: 4px;
+
+    .music-source-label {
+      font-size: 11px;
+      opacity: 0.7;
+      color: var(--foreground);
+    }
+
+    image {
+      opacity: 0.7;
+    }
+  }
+
+  .music-art-container {
+    min-width: 250px;
+    min-height: 150px;
+
+    picture {
+      min-width: 250px;
+      min-height: 150px;
+    }
+  }
+
+  .music-marquee-label {
+    font-size: 12px;
+    font-family: "JetBrainsMono Nerd Font";
+    color: var(--foreground);
+  }
+}
+
+.music-progress {
+  margin: 4px 0;
+
+  trough {
+    min-height: 4px;
+    border-radius: 2px;
+    background-color: color-mix(in srgb, var(--foreground) 20%, transparent);
+
+    highlight {
+      background-color: var(--color4);
+      border-radius: 2px;
+    }
+  }
+
+  slider {
+    min-width: 12px;
+    min-height: 12px;
+    border-radius: 50%;
+    background-color: var(--color4);
+  }
+}
+
+.music-controls button {
+  background: none;
+  border: none;
+  color: var(--foreground);
+  padding: 4px 8px;
+
+  &:hover {
+    color: var(--color4);
+  }
+}
+
+.music-toggle {
+  opacity: 0.5;
+
+  &.active {
+    opacity: 1;
+    color: var(--color4);
+  }
 }
 
 .sysinfo-content {

@@ -55,6 +55,8 @@
         };
     };
 
+    services.atd.enable = true;
+
     users.users.blakec = {
         isNormalUser = true;
         extraGroups = [

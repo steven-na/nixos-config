@@ -87,5 +87,6 @@
 
             layerrule = blur on, match:namespace bar
             layerrule = blur on, match:namespace hover-popup
+            layerrule = no_anim on, match:namespace hover-popup
         '';
 }

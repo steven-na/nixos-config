@@ -30,6 +30,11 @@
             serverAliveInterval = 60;
             addKeysToAgent = "yes";
         };
+        extraConfig = ''
+            Host 192.168.10.1
+              IgnoreUnknown WarnWeakCrypto
+              WarnWeakCrypto no-pq-kex
+        '';
     };
 
     # Env vars

@@ -7,13 +7,13 @@ function sh(cmd: string): string[] {
 }
 
 export default function SysInfo() {
-  const cpuUsage = createPoll("...", 2500, sh("top -bn1 | grep 'Cpu(s)' | awk '{print $2\"%\"}'"))
+  const cpuUsage = createPoll("...", 3000, sh("top -bn1 | grep 'Cpu(s)' | awk '{print $2\"%\"}'"))
   const cpuTemp = createPoll(
     "...",
-    2500,
+    5000,
     sh("sensors 2>/dev/null | grep -m1 'Package' | awk '{print $4}' || echo 'N/A'"),
   )
-  const ram = createPoll("...", 2500, sh("free -h | awk '/Mem:/{print $3\" / \"$2}'"))
+  const ram = createPoll("...", 5000, sh("free -h | awk '/Mem:/{print $3\" / \"$2}'"))
   const storage = createPoll(
     "...",
     30000,
@@ -21,30 +21,30 @@ export default function SysInfo() {
   )
   const net = createPoll(
     "...",
-    1000,
-    sh("ip -brief addr show | grep -e UP -e UNKNOWN | awk '{print $1\": \"$3}' | sed 's|/.*||'"),
+    10000,
+    sh("ip -brief addr show | grep UP | awk '{print $1\": \"$3}' | sed 's|/.*||'"),
   )
   const gpu = createPoll(
     "",
-    2500,
+    5000,
     sh("nvidia-smi --query-gpu=utilization.gpu,temperature.gpu,memory.used,memory.total --format=csv,noheader,nounits 2>/dev/null || echo ''"),
   )
 
   const popoverContent = (
     <box orientation={Gtk.Orientation.VERTICAL} cssClasses={["sysinfo-content"]}>
       <box cssClasses={["sysinfo-section"]}>
-        <label label=" CPU" cssClasses={["sysinfo-header"]} halign={Gtk.Align.START} />
+        <label label=" CPU" cssClasses={["sysinfo-header"]} halign={Gtk.Align.START} />
       </box>
       <label label={cpuUsage((u) => `  Usage: ${u}`)} halign={Gtk.Align.START} />
       <label label={cpuTemp((t) => `  Temp: ${t}`)} halign={Gtk.Align.START} />
 
       <box cssClasses={["sysinfo-section"]}>
-        <label label=" RAM" cssClasses={["sysinfo-header"]} halign={Gtk.Align.START} />
+        <label label=" RAM" cssClasses={["sysinfo-header"]} halign={Gtk.Align.START} />
       </box>
       <label label={ram((r) => `  Used: ${r}`)} halign={Gtk.Align.START} />
 
       <box cssClasses={["sysinfo-section"]}>
-        <label label="󱛟 Storage" cssClasses={["sysinfo-header"]} halign={Gtk.Align.START} />
+        <label label=" Storage" cssClasses={["sysinfo-header"]} halign={Gtk.Align.START} />
       </box>
       <label label={storage((s) => `  /: ${s}`)} halign={Gtk.Align.START} />
 

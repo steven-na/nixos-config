@@ -8,6 +8,7 @@ import Battery from "./widgets/Battery"
 import Wifi from "./widgets/Wifi"
 import SysTray from "./widgets/SysTray"
 import SysInfo from "./widgets/SysInfo"
+import MusicPlayer from "./widgets/MusicPlayer"
 
 app.start({
   css: style,
@@ -30,6 +31,7 @@ app.start({
             <WindowTitle />
           </box>
           <box $type="center" cssClasses={["bar-center"]}>
+            <MusicPlayer />
             <Clock />
           </box>
           <box $type="end" hexpand halign={Gtk.Align.END} cssClasses={["bar-right"]}>

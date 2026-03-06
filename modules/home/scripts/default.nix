@@ -7,13 +7,15 @@
 
 let
     scriptModules = [
+        # Ordered in reverse in picker
         ./wallpaper_picker.nix
         ./screenshot.nix
         ./recent_screenshot.nix
-        ./power_menu.nix
         ./color_picker.nix
         ./service_manager.nix
         ./kill_process.nix
+        ./set_reminder.nix
+        ./power_menu.nix
         ./toggle_vpn.nix
     ];
 

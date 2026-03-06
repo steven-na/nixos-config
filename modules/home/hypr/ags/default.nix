@@ -15,9 +15,11 @@
             inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
             inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.network
             inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.notifd
+            inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.mpris
             inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.tray
+            upower
             fzf
-            lm_sensors
+            glib-networking
         ];
     };
 }

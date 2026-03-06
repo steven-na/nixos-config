@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-    home.packages = [ pkgs.wallust ];
+    home.packages = [
+        pkgs.wallust
+        pkgs.imagemagick
+    ];
 
     # Main wallust config
     xdg.configFile."wallust/wallust.toml".text = ''
@@ -228,8 +231,16 @@
 
                 echo "$WALLPAPER" > ~/.cache/wallust/last-wallpaper
 
+                brightness=$(magick "$WALLPAPER" -resize 1x1 txt:- | awk -F'[(),]' 'NR==2 {print ($2+$3+$4)/3}')
+
+                if awk "BEGIN {exit !($brightness > 128)}"; then
+                    palette="softlight16"
+                else
+                    palette="harddark16"
+                fi
+
                 # Generate palette and render all templates
-                wallust run "$WALLPAPER"
+                wallust run "$WALLPAPER" --palette "$palette"
 
                 # Reload waybar
                 pkill -SIGUSR2 waybar 2>/dev/null || true

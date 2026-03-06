@@ -21,17 +21,17 @@
         };
 
         font = {
-            name = "Noto Sans";
+            name = "JetBrainsMono Nerd Font";
             size = 11;
         };
 
-        gtk3.extraConfig = {
-            gtk-application-prefer-dark-theme = 1;
-        };
-
-        gtk4.extraConfig = {
-            gtk-application-prefer-dark-theme = 1;
-        };
+        # gtk3.extraConfig = {
+        #     gtk-application-prefer-dark-theme = 1;
+        # };
+        #
+        # gtk4.extraConfig = {
+        #     gtk-application-prefer-dark-theme = 1;
+        # };
     };
 
     # Match cursor in Qt apps and on the desktop
@@ -44,9 +44,9 @@
     };
 
     # Qt theming to match GTK
-    qt = {
-        enable = true;
-        platformTheme.name = "gtk";
-        style.name = "adwaita-dark";
-    };
+    # qt = {
+    #     enable = true;
+    #     platformTheme.name = "gtk";
+    #     style.name = "adwaita-dark";
+    # };
 }

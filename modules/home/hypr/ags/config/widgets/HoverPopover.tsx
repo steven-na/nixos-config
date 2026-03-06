@@ -19,12 +19,16 @@ function hasActiveMenuPopover(widget: Gtk.Widget): boolean {
 export default function HoverPopover({
   iconName,
   label: triggerLabel,
+  trigger,
   cssClasses = [],
+  align = "end",
   children,
 }: {
   iconName?: string
   label?: string
+  trigger?: Gtk.Widget
   cssClasses?: string[]
+  align?: "start" | "end"
   children: Gtk.Widget
 }) {
   let leaveTimer: ReturnType<typeof setTimeout> | null = null
@@ -90,21 +94,33 @@ export default function HoverPopover({
     if (!ok) return
 
     const barHeight = (root as Gtk.Widget).get_height()
-    // Flush with bar bottom — bar border acts as popup's top border
     popupWindow.marginTop = barHeight
-    // Temporarily position at trigger's left edge
-    const triggerRight = Math.round(point.x) + trigger.get_width()
-    popupWindow.marginLeft = triggerRight
-    popupWindow.visible = true
+    const triggerLeft = Math.round(point.x)
+    const triggerRight = triggerLeft + trigger.get_width()
 
-    setTimeout(() => {
-      // Right-align popup to trigger's right edge
-      const popupWidth = borderWrapper.get_width()
-      if (popupWidth > 0) {
-        popupWindow.marginLeft = Math.max(0, triggerRight - popupWidth)
+    function computeMarginLeft(popupWidth: number): number {
+      if (align === "start") {
+        return triggerLeft
       }
+      return Math.max(0, triggerRight - popupWidth)
+    }
+
+    // If we already know the popup width from a previous show, position immediately
+    const knownWidth = borderWrapper.get_width()
+    if (knownWidth > 0) {
+      popupWindow.marginLeft = computeMarginLeft(knownWidth)
+      popupWindow.visible = true
       revealer.revealChild = true
-    }, 0)
+      return
+    }
+
+    // Measure natural width before showing — works pre-map unlike get_width()
+    const [, natWidth] = borderWrapper.measure(Gtk.Orientation.HORIZONTAL, -1)
+    if (natWidth > 0) {
+      popupWindow.marginLeft = computeMarginLeft(natWidth)
+    }
+    popupWindow.visible = true
+    revealer.revealChild = true
   }
 
   function scheduleClose() {
@@ -135,7 +151,7 @@ export default function HoverPopover({
         onCleanup(() => popupWindow.destroy())
       }}
     >
-      {triggerLabel ? <label label={triggerLabel} /> : <image iconName={iconName!} />}
+      {trigger ? trigger : triggerLabel ? <label label={triggerLabel} /> : <image iconName={iconName!} />}
     </box>
   )
 }
