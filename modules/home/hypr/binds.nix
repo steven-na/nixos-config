@@ -57,6 +57,7 @@
             # Special workspaces
             "$mainMod, S, togglespecialworkspace, magic"
             "$mainMod, D, exec, pgrep electron && hyprctl dispatch togglespecialworkspace discord || electron &"
+            "$mainMod SHIFT, D, exec, hyprctl dispatch togglespecialworkspace docs && ~/.local/bin/doc-browser.sh"
             "$mainMod, P, exec, hyprctl dispatch togglespecialworkspace spotify"
             "$mainMod, O, exec, hyprctl dispatch togglespecialworkspace obsidian"
 

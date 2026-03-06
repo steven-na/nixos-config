@@ -3,6 +3,7 @@
     imports = [
         ../../modules/home/apps.nix
         ../../modules/home/discord.nix
+        ../../modules/home/docs.nix
         ../../modules/home/extras.nix
         ../../modules/home/foot.nix
         ../../modules/home/fuzzel.nix

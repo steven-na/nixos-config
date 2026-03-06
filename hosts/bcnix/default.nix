@@ -7,11 +7,12 @@
 {
     # boot.kernelPackages = pkgs.linuxPackages_latest;
     imports = [
-        ./hardware-configuration.nix
-        ../../modules/system/hyprland.nix
+        ../../modules/system/docs.nix
         ../../modules/system/fonts.nix
+        ../../modules/system/hyprland.nix
         ../../modules/system/locale.nix
         ../../modules/system/vpn.nix
+        ./hardware-configuration.nix
     ];
 
     boot.loader.systemd-boot.enable = true;

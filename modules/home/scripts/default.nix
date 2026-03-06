@@ -8,8 +8,9 @@
 let
     scriptModules = [
         # Ordered in reverse in picker
-        ./wallpaper_picker.nix
+        ./doc_browser.nix
         ./screenshot.nix
+        ./wallpaper_picker.nix
         ./recent_screenshot.nix
         ./color_picker.nix
         ./service_manager.nix

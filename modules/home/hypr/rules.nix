@@ -26,6 +26,15 @@
                  tile = true
              }
 
+             # Docs-browser -> special:docs
+             windowrule {
+                 name = docs
+                 match:class = doc-browser
+
+                 workspace = special:docs silent
+             }  
+
+
              # Steam friends/settings -> float
              windowrule {
                  name = steam-friends
