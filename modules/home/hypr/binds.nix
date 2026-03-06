@@ -20,12 +20,15 @@
             "$mainMod SHIFT, F, exec, zen-beta --profile ~/.config/zen/default/"
 
             #cliphist
-            "$mainMod, V, exec, cliphist list | ags request pick:$(cat) | cliphist decode | wl-copy"
+            # "$mainMod, V, exec, cliphist list | ags request pick:$(cat) | cliphist decode | wl-copy"
+            "$mainMod, V, exec, bash -c 'ags request \"pick:$(cliphist list)\" | cliphist decode | wl-copy'"
 
             # Screenshots
             ", Print, exec, ~/.local/bin/screenshot.sh area"
             "$mainMod, Print, exec, ~/.local/bin/screenshot.sh screen"
             "$mainMod SHIFT, Print, exec, ~/.local/bin/screenshot.sh window"
+            "$mainMod ALT, Print, exec, ~/.local/bin/screenshot.sh area-record"
+            "$mainMod ALT SHIFT, Print, exec, ~/.local/bin/screenshot.sh area-record-stop"
 
             # Wallpaper picker
             "$mainMod, W, exec, ~/.local/bin/pick-wallpaper.sh"

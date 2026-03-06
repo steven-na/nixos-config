@@ -7,6 +7,7 @@
         deadnix
         fastfetch
         fd
+        ffmpeg
         file
         git
         grc
