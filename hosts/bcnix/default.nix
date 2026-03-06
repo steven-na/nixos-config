@@ -8,10 +8,10 @@
     # boot.kernelPackages = pkgs.linuxPackages_latest;
     imports = [
         ./hardware-configuration.nix
-        ./vpn.nix
         ../../modules/system/hyprland.nix
         ../../modules/system/fonts.nix
         ../../modules/system/locale.nix
+        ../../modules/system/vpn.nix
     ];
 
     boot.loader.systemd-boot.enable = true;
