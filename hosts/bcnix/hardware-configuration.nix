@@ -21,6 +21,7 @@
         "nvme"
         "usbhid"
     ];
+    boot.kernelParams = [ "nvidia_drm.modeset=1" ];
     boot.initrd.kernelModules = [ ];
     boot.kernelModules = [ "kvm-intel" ];
     boot.extraModulePackages = [ ];

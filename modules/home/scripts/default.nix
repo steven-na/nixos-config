@@ -55,19 +55,11 @@ in
                       ${pkgs.jq}/bin/jq -r '.[] | "\(.icon)  \(.label)"' "$config"
                     )"
 
-                    selection="$(
-                        printf '%s\n' "$menu" | \
-                            ${pkgs.fzf}/bin/fzf \
-                            --prompt='Launch> ' \
-                            --height=100% \
-                            --layout=reverse \
-                            --no-border \
-                            --no-info
-                    )"
+                    selection="$(ags request "pick:''${menu}")"
 
                     [ -n "$selection" ] || exit 0
 
-                    label="$(printf '%s' "$selection" | sed 's/^[^ ]* *//')"
+                    label="$(printf '%s' "$selection" | ${pkgs.gnused}/bin/sed 's/^[^ ]* *//')"
 
                     script="$(
                       ${pkgs.jq}/bin/jq -r \
@@ -80,7 +72,6 @@ in
                 '';
         };
         home.packages = with pkgs; [
-            fzf
             jq
         ];
     };

@@ -17,6 +17,12 @@
                 #!/usr/bin/env bash
                 set -eu
 
+                SCRIPT="$HOME/.local/bin/service-manager.sh"
+
+                if [ "''${1:-}" != "--inner" ]; then
+                  exec foot --app-id float-term -e "$SCRIPT" --inner
+                fi
+
                 service="$(
                   systemctl list-units --type=service --all --no-legend --no-pager |
                     ${pkgs.gawk}/bin/awk '{print $1}' |
@@ -30,7 +36,7 @@
                       --preview-window='right,60%,wrap'
                 )"
 
-                [ -n "$selection" ] || exit 0
+                [ -n "$service" ] || exit 0
 
                 action="$(
                   printf 'status\nstart\nstop\nrestart' |
@@ -45,7 +51,7 @@
                 [ -n "$action" ] || exit 0
 
                 case "$action" in
-                  status)  systemctl status --no-pager --full "$service" | ${pkgs.less}/bin/less ;;
+                  status) systemctl status --no-pager --full "$service" | ${pkgs.less}/bin/less -FRX ;;
                   start)   systemctl start "$service" ;;
                   stop)    systemctl stop "$service" ;;
                   restart) systemctl restart "$service" ;;

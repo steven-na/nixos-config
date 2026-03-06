@@ -17,9 +17,16 @@
                 #!/usr/bin/env bash
                 set -eu
 
+                SCRIPT="$HOME/.local/bin/kill-process.sh"
+
+                if [ "''${1:-}" != "--inner" ]; then
+                  exec foot --app-id float-term -e "$SCRIPT" --inner
+                fi
+
                 selection="$(
                   ${pkgs.procps}/bin/ps -eo pid,user,comm,args --no-headers |
                     ${pkgs.fzf}/bin/fzf \
+                      --multi \
                       --prompt='> ' \
                       --height=100% \
                       --layout=reverse \
@@ -31,10 +38,13 @@
 
                 [ -n "$selection" ] || exit 0
 
-                pid="$(echo "$selection" | ${pkgs.gawk}/bin/awk '{print $1}')"
+                killed=""
+                while IFS= read -r line; do
+                  pid="$(echo "$line" | ${pkgs.gawk}/bin/awk '{print $1}')"
+                  kill "$pid" && killed="$killed $pid"
+                done <<< "$selection"
 
-                kill "$pid"
-                ${pkgs.libnotify}/bin/notify-send "Process killed" "PID $pid"
+                ${pkgs.libnotify}/bin/notify-send "Process(es) killed" "PIDs:$killed"
             '';
     };
 }

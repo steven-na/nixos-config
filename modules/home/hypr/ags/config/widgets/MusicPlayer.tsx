@@ -298,20 +298,27 @@ function PlayerControls({ player }: { player: AstalMpris.Player }) {
   }
 
   function updateArt() {
-    const path = player.coverArt
-    if (path) {
-      loadPicture(path)
-      return
-    }
     const url = player.artUrl
+    // For HTTP URLs, skip Astal's internal caching (which can fail with
+    // CRITICAL errors) and use our own fetchCoverArt() directly.
     if (url && url.startsWith("http")) {
       fetchCoverArt(url, (cachedPath) => {
         if (cachedPath) loadPicture(cachedPath)
         else picture.set_paintable(null)
       })
-    } else {
-      picture.set_paintable(null)
+      return
     }
+    // For local paths, prefer Astal's coverArt (resolved local path)
+    const path = player.coverArt
+    if (path) {
+      loadPicture(path)
+      return
+    }
+    if (url) {
+      loadPicture(url)
+      return
+    }
+    picture.set_paintable(null)
   }
   player.connect("notify::cover-art", updateArt)
   player.connect("notify::art-url", updateArt)

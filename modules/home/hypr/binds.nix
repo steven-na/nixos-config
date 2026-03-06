@@ -16,11 +16,11 @@
             # Exec binds
             "$mainMod, Q, exec, foot"
             "$mainMod, M, exec, foot -e yazi"
-            "$mainMod, R, exec, fuzzel"
+            "$mainMod, R, exec, ags request launcher"
             "$mainMod SHIFT, F, exec, zen-beta --profile ~/.config/zen/default/"
 
             #cliphist
-            "$mainMod, V, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
+            "$mainMod, V, exec, cliphist list | ags request pick:$(cat) | cliphist decode | wl-copy"
 
             # Screenshots
             ", Print, exec, ~/.local/bin/screenshot.sh area"
@@ -28,10 +28,10 @@
             "$mainMod SHIFT, Print, exec, ~/.local/bin/screenshot.sh window"
 
             # Wallpaper picker
-            "$mainMod, W, exec, foot --app-id wallpaper-picker -e ~/.local/bin/pick-wallpaper.sh"
+            "$mainMod, W, exec, ~/.local/bin/pick-wallpaper.sh"
 
             # Script launcher
-            "$mainMod, E, exec, foot --app-id script-launcher -e ~/.local/bin/script-launcher.sh"
+            "$mainMod, E, exec, ~/.local/bin/script-launcher.sh"
 
             # Lock
             "$mainMod SHIFT, L, exec, loginctl lock-session"

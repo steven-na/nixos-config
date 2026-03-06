@@ -17,17 +17,13 @@
                 #!/usr/bin/env bash
                 set -eu
 
-                options="Shutdown\nReboot\nSuspend\nHibernate\nLogout"
+                options="Shutdown
+                         Reboot
+                         Suspend
+                         Hibernate
+                         Logout"
 
-                selection="$(
-                  printf '%b' "$options" |
-                    ${pkgs.fzf}/bin/fzf \
-                      --prompt='> ' \
-                      --height=100% \
-                      --layout=reverse \
-                      --no-border \
-                      --no-info
-                )"
+                selection="$(ags request "pick:''${options}")"
 
                 [ -n "$selection" ] || exit 0
 

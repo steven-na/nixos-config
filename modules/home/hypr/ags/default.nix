@@ -17,7 +17,13 @@
             inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.notifd
             inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.mpris
             inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.tray
+            inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.wireplumber
+            inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.bluetooth
+            inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.powerprofiles
+            inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.apps
             upower
+            brightnessctl
+            hyprsunset
             fzf
             glib-networking
         ];

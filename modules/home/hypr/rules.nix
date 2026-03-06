@@ -6,7 +6,7 @@
              windowrule {
                  name = discord
                  match:class = discord
-                 
+
                  workspace = special:discord silent
              }  
 
@@ -52,18 +52,12 @@
              }
 
             windowrule {
-                name = wallpaper-picker
-                match:class = (wallpaper-picker)
+                name = float-term
+                match:class = (float-term)
                 center = true
                 float = true
+                stay_focused = true
                 size = 900 600
-            }
-
-            windowrule {
-                name = script-launcher
-                match:class = (script-launcher)
-                center = true
-                float = true
             }
 
             windowrule {
@@ -87,6 +81,8 @@
 
             layerrule = blur on, match:namespace bar
             layerrule = blur on, match:namespace hover-popup
+            layerrule = blur on, match:namespace launcher
             layerrule = no_anim on, match:namespace hover-popup
+            layerrule = no_anim on, match:namespace launcher
         '';
 }

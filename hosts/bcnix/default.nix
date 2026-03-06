@@ -72,7 +72,10 @@
 
     environment.systemPackages = [
         inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
+        pkgs.brightnessctl
     ];
+
+    hardware.acpilight.enable = true;
 
     nixpkgs.config.allowUnfree = true;
 

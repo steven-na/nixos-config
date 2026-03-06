@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+items="$(cat)"
+ags request "pick:$items"
