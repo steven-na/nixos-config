@@ -431,6 +431,58 @@
                   done
                 }
 
+                # ── ASK AI ─────────────────────────────────────────────────────────────────────
+
+                menu_ask() {
+                  while true; do
+                    read -rp $'\nask > question (or enter to exit): ' question 2>/dev/tty
+                    [ -z "$question" ] && return
+
+                    # Gather context about available docs
+                    man_pages=$(man -k . 2>/dev/null | awk '{print $1}' | sort -u | tr '\n' ' ' | cut -c1-2000)
+                    tldr_pages=$(tldr --list 2>/dev/null | sort | tr '\n' ' ' | cut -c1-1000)
+                    zeal_docsets=$(find "$HOME/.local/share/Zeal/Zeal/docsets" /usr/share/zeal/docsets 2>/dev/null \
+                      -maxdepth 1 -name '*.docset' \
+                      | sed 's|.*/||; s|\.docset$||' \
+                      | sort | tr '\n' ' ')
+
+                    prompt="You are a documentation assistant. The user is on NixOS.
+
+Available doc sources on this system:
+- man: manual pages (man <page>)
+- tldr: quick examples (tldr <page>)
+- cheat: cheatsheets (cheat <page>)
+- pinfo: GNU info pages (pinfo <topic>)
+- nixos-option: NixOS options (nixos-option <path>)
+- nix-doc: Nix lib functions (nix-doc query <term>)
+- zeal: offline API docs — open with: zeal '<docset>:<query>'
+
+Installed man pages (truncated): $man_pages
+
+Installed tldr pages (truncated): $tldr_pages
+
+Installed Zeal docsets: $zeal_docsets
+
+User question: $question
+
+Reply with ONLY a short bulleted list of the exact commands they should run to find relevant docs. Format each line as:
+  • <command>  — <one sentence why>
+
+No preamble, no explanation, no closing remarks. Only the list."
+
+                    echo ""
+                    echo "── AI suggestions ────────────────────────────────────────────────"
+                    claude --print "$prompt" 2>/dev/null || {
+                      echo "Error: claude CLI not found or not logged in."
+                      echo "Install with: npm install -g @anthropic-ai/claude-code"
+                    }
+                    echo "──────────────────────────────────────────────────────────────────"
+                    echo ""
+                    read -rp "Press enter to ask another, or leave blank to go back: " again 2>/dev/tty
+                    [ -z "$again" ] && return
+                  done
+                }
+
                 # ── TOP-LEVEL MENU ─────────────────────────────────────────────────────────────
 
                 while true; do
@@ -441,6 +493,7 @@
                     "pinfo -- GNU info browser" \
                     "nixos -- NixOS/HM docs, options, nix-doc" \
                     "devdocs -- Zeal & dedoc offline API docs" \
+                    "ask -- AI doc suggestions" \
                     | fzf_menu "docs >") || exit 0
 
                   case "$top" in
@@ -450,6 +503,7 @@
                     "pinfo"*)   menu_pinfo ;;
                     "nixos"*)   menu_nixos_docs ;;
                     "devdocs"*) menu_devdocs ;;
+                    "ask"*)     menu_ask ;;
                   esac
                 done
 

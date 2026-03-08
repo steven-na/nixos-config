@@ -90,7 +90,7 @@
 
         bindm = [
             "$mainMod, mouse:272, movewindow"
-            "$mainMod CTR;, mouse:272, movewindow"
+            "$mainMod CTRL, mouse:272, movewindow"
             "$mainMod, mouse:273, resizewindow"
         ];
 
