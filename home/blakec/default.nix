@@ -11,6 +11,7 @@
         ../../modules/home/gtk.nix
         ../../modules/home/hypr
         ../../modules/home/mako.nix
+        ../../modules/home/networking.nix
         ../../modules/home/scripts
         ../../modules/home/shell/default.nix
         ../../modules/home/spotify.nix

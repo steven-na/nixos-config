@@ -11,6 +11,7 @@
         ../../modules/system/fonts.nix
         ../../modules/system/hyprland.nix
         ../../modules/system/locale.nix
+        ../../modules/system/misc.nix
         ../../modules/system/vpn.nix
         ./hardware-configuration.nix
     ];
@@ -35,7 +36,7 @@
         51820
     ];
 
-    virtualisation.docker.enable = false;
+    virtualisation.docker.enable = true;
 
     services.syncthing = {
         enable = true;
@@ -65,6 +66,8 @@
             "networkmanager"
             "audio"
             "video"
+            "docker"
+            "wireshark"
         ];
         shell = pkgs.fish;
     };
