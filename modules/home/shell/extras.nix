@@ -3,16 +3,16 @@
     home.packages = with pkgs; [
         cargo
         chafa
+        claude-code
         comma
         deadnix
         fastfetch
         fd
-        ffmpeg
+        ffmpeg-full
         file
         git
         grc
         inputs.vimconf.packages.x86_64-linux.default
-        claude-code
         jq
         just
         lazygit
@@ -21,6 +21,7 @@
         nixfmt
         ripgrep
         statix
+        ts
         unzip
         wget
     ];

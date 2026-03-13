@@ -102,6 +102,8 @@
         ];
     };
 
+    services.gnome.gnome-keyring.enable = true;
+
     nix.gc = {
         automatic = true;
         dates = "weekly";

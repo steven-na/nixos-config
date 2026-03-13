@@ -16,6 +16,7 @@
         ../../modules/home/shell/default.nix
         ../../modules/home/spotify.nix
         ../../modules/home/wallust.nix
+        ../../modules/home/yt-dlp.nix
         ../../modules/home/zen-browser.nix
     ];
 
