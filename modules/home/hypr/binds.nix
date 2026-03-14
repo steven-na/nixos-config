@@ -4,6 +4,11 @@
 
         "$mainMod" = "SUPER";
 
+        binde = [
+            "$mainMod, B, exec, ydotool mousemove --wheel -- 0  1"
+            "$mainMod, V, exec, ydotool mousemove --wheel -- 0 -1"
+        ];
+
         bind = [
 
             # Window actions
@@ -13,15 +18,18 @@
             "$mainMod, F, fullscreen, 1"
             "$mainMod CTRL, F, fullscreen, 0"
 
+            # Navigation
+            "$mainMod, G, exec, wl-kbptr -o modes=floating,click -o mode_floating.source=detect"
+            "$mainMod, M, exec, wl-kbptr -o modes=tile,bisect,click"
+
             # Exec binds
             "$mainMod, Q, exec, foot"
-            "$mainMod, M, exec, foot -e yazi"
             "$mainMod, R, exec, ags request launcher"
             "$mainMod SHIFT, F, exec, zen-beta --profile ~/.config/zen/default/"
 
             #cliphist
             # "$mainMod, V, exec, cliphist list | ags request pick:$(cat) | cliphist decode | wl-copy"
-            "$mainMod, V, exec, bash -c 'ags request \"pick:$(cliphist list)\" | cliphist decode | wl-copy'"
+            "$mainMod SHIFT, V, exec, bash -c 'ags request \"pick:$(cliphist list)\" | cliphist decode | wl-copy'"
 
             # Screenshots
             ", Print, exec, ~/.local/bin/screenshot.sh area"

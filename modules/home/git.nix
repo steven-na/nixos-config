@@ -3,7 +3,7 @@
     programs.git = {
         enable = true;
         settings = {
-            user.email = "bstevencamp@gmail.com";
+            user.email = "noreply.github@stvnc.dev";
             user.name = "steven-na";
             init.defaultBranch = "main";
             pull.rebase = true;

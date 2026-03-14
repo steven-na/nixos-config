@@ -13,6 +13,11 @@
         ./ags
     ];
 
+    home.packages = with pkgs; [
+        wl-kbptr
+        wlrctl
+    ];
+
     wayland.windowManager.hyprland = {
         enable = true;
 

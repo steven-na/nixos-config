@@ -45,6 +45,8 @@
     # D-Bus
     services.dbus.enable = true;
 
+    programs.ydotool.enable = true;
+
     services.mpd = {
         enable = true;
         user = "blakec";

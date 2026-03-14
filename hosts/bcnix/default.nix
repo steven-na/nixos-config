@@ -68,6 +68,7 @@
             "video"
             "docker"
             "wireshark"
+            "ydotool"
         ];
         shell = pkgs.fish;
     };
