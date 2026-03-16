@@ -26,10 +26,6 @@
         template = "foot-colors.ini"
         target = "~/.cache/wallust/foot-colors.ini"
 
-        [templates.fuzzel]
-        template = "fuzzel.ini"
-        target = "~/.config/fuzzel/fuzzel.ini"
-
         [templates.mako]
         template = "mako-colors"
         target = "~/.cache/wallust/mako-colors"
@@ -90,37 +86,6 @@
         bright5={{ color13 | strip }}
         bright6={{ color14 | strip }}
         bright7={{ color15 | strip }}
-    '';
-
-    # ── fuzzel.ini ───────────────────────────────────────────────────────
-    xdg.configFile."wallust/templates/fuzzel.ini".text = ''
-        [main]
-        font=JetBrainsMono Nerd Font:size=12
-        icon-theme=Papirus-Dark
-        icons-enabled=yes
-        terminal=foot
-        width=35
-        lines=10
-        prompt=❯ 
-        fuzzy=yes
-        anchor=center
-        layer=overlay
-
-        [border]
-        width=2
-        radius=8
-
-        [dmenu]
-        exit-immediately-if-empty=yes
-
-        [colors]
-        background={{ background | strip }}cc
-        text={{ foreground | strip }}ff
-        match={{ color2 | strip }}ff
-        selection={{ color1 | strip }}cc
-        selection-text={{ background | strip }}ff
-        selection-match={{ color2 | strip }}ff
-        border={{ color1 | strip }}ff
     '';
 
     # ── hyprland-colors.conf ─────────────────────────────────────────────

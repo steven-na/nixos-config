@@ -166,14 +166,6 @@ wall-random:
     ~/.local/bin/set-wallpaper.sh \
         "$(find ~/wallpapers -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.jpeg' \) | shuf -n 1)"
 
-# Pick a wallpaper interactively via fuzzel
-[group('theme')]
-wall-pick:
-    find ~/wallpapers -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.jpeg' \) \
-        | xargs -I{} basename {} \
-        | fuzzel --dmenu \
-        | xargs -I{} ~/.local/bin/set-wallpaper.sh ~/wallpapers/{}
-
 # Show the current wallust color palette in the terminal
 [group('theme')]
 palette:

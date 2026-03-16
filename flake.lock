@@ -891,11 +891,11 @@
         "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1772688172,
-        "narHash": "sha256-G4FWcufapbh05fXukJdrhLZ9XpTKBX8CL6li1b4cljA=",
+        "lastModified": 1773566455,
+        "narHash": "sha256-4cMgndcrrK7dMZB9td4Fo237q+ovgnjwoKQRzbn8JXY=",
         "owner": "steven-na",
         "repo": "nixos-nvim-config",
-        "rev": "85ecd60eb15614b35c02d79e4ebee493d6f1b7e3",
+        "rev": "62ae085dc7b73f2601599bc0fcf257de0c39021e",
         "type": "github"
       },
       "original": {

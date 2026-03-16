@@ -6,7 +6,6 @@
         ../../modules/home/docs.nix
         ../../modules/home/extras.nix
         ../../modules/home/foot.nix
-        ../../modules/home/fuzzel.nix
         ../../modules/home/git.nix
         ../../modules/home/gtk.nix
         ../../modules/home/hypr

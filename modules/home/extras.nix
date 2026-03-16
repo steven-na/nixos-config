@@ -4,13 +4,13 @@
         # Hyprland ecosystem
         hyprpaper # wallpaper daemon
         hypridle # idle/lock daemon
-        hyprlock # screen locker (themed via wallust)
-        hyprpolkitagent # auth agent (replaces polkit-kde-agent)
+        hyprlock # screen locker
+        hyprpolkitagent # auth agent
         hyprpicker # color picker
 
         # Clipboard
         wl-clipboard # wl-copy / wl-paste
-        cliphist # clipboard history (pipe to fuzzel)
+        cliphist # clipboard history
 
         # Screenshot
         grim # screenshot
