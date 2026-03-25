@@ -26,6 +26,7 @@
 
     networking.hostName = "bcnix";
     networking.networkmanager.enable = true;
+    networking.nameservers = [ "127.0.0.1" ];
 
     networking.firewall.checkReversePath = false;
     networking.firewall.allowedTCPPorts = [
@@ -35,6 +36,21 @@
         21027
         51820
     ];
+
+    services.blocky = {
+        enable = true;
+        settings = {
+            ports.dns = 53;
+            upstreams.groups.default = [
+                "1.1.1.1"
+                "8.8.8.8"
+            ];
+            blocking = {
+                denylists.custom = [ "/etc/nixos/blocked-domains.txt" ];
+                clientGroupsBlock.default = [ "custom" ];
+            };
+        };
+    };
 
     virtualisation.docker.enable = true;
 

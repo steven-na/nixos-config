@@ -6,7 +6,7 @@
 #         '';
 #         settings = {
 #             main = {
-#                 font = "JetBrainsMono Nerd Propo Font:size=12";
+#                 font = "JetBrainsMono Nerd Font Propo:size=12";
 #                 pad = "8x8";
 #                 shell = "fish";
 #             };

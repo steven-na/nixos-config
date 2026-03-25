@@ -5,8 +5,7 @@
         "$mainMod" = "SUPER";
 
         binde = [
-            "$mainMod, B, exec, ydotool mousemove --wheel -- 0  1"
-            "$mainMod, V, exec, ydotool mousemove --wheel -- 0 -1"
+
         ];
 
         bind = [
@@ -18,9 +17,9 @@
             "$mainMod, F, fullscreen, 1"
             "$mainMod CTRL, F, fullscreen, 0"
 
-            # Navigation
-            "$mainMod, G, exec, wl-kbptr -o modes=floating,click -o mode_floating.source=detect"
-            "$mainMod, M, exec, wl-kbptr -o modes=tile,bisect,click"
+            # KB Mouse Navigation
+            "$mainMod, G, exec, pkill wl-kbptr || true; wl-kbptr -o modes=floating,click -o mode_floating.source=detect"
+            "$mainMod, M, exec, pkill wl-kbptr || true; wl-kbptr -o modes=tile,bisect,click"
 
             # Exec binds
             "$mainMod, Q, exec, foot"
@@ -28,7 +27,6 @@
             "$mainMod SHIFT, F, exec, zen-beta --profile ~/.config/zen/default/"
 
             #cliphist
-            # "$mainMod, V, exec, cliphist list | ags request pick:$(cat) | cliphist decode | wl-copy"
             "$mainMod SHIFT, V, exec, bash -c 'ags request \"pick:$(cliphist list)\" | cliphist decode | wl-copy'"
 
             # Screenshots
@@ -48,10 +46,10 @@
             "$mainMod SHIFT, L, exec, loginctl lock-session"
 
             # Focus movement (arrows)
-            "$mainMod, left, movefocus, l"
+            "$mainMod, left,  movefocus, l"
             "$mainMod, right, movefocus, r"
-            "$mainMod, up, movefocus, u"
-            "$mainMod, down, movefocus, d"
+            "$mainMod, up,    movefocus, u"
+            "$mainMod, down,  movefocus, d"
 
             # Focus movement (vim keys)
             "$mainMod, h, movefocus, l"
@@ -115,13 +113,12 @@
             ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
             ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
         ];
-
-        # Resize submap
-        submap = "reset";
-
         # Resize submap block (must be raw text after settings)
     };
     wayland.windowManager.hyprland.extraConfig = ''
+        binde = SUPER, B, exec, ydotool mousemove --wheel -- 0  1
+        binde = SUPER, V, exec, ydotool mousemove --wheel -- 0 -1
+
         # --- Resize submap ---
         submap = resize
 
