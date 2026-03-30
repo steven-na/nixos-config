@@ -66,7 +66,7 @@
 
     # ── foot-colors.ini ─────────────────────────────────────────────────
     xdg.configFile."wallust/templates/foot-colors.ini".text = ''
-        [colors]
+        [colors-dark]
         alpha=0.6
         background={{ background | strip }}
         foreground={{ foreground | strip }}

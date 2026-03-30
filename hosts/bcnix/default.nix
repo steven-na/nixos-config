@@ -12,7 +12,7 @@
         ../../modules/system/hyprland.nix
         ../../modules/system/locale.nix
         ../../modules/system/misc.nix
-        ../../modules/system/vpn.nix
+        # ../../modules/system/vpn.nix
         ./hardware-configuration.nix
     ];
 

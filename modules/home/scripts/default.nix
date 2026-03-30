@@ -17,7 +17,7 @@ let
         ./kill_process.nix
         ./set_reminder.nix
         ./power_menu.nix
-        ./toggle_vpn.nix
+        # ./toggle_vpn.nix
     ];
 
     entries = config.scriptLauncher.scripts;
